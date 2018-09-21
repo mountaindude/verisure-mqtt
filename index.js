@@ -2,10 +2,19 @@ const Verisure = require('verisure');
 const mqtt = require('mqtt');
 var asyncInterval = require('asyncinterval');
 
+
+// Set to true to output all received info to console.
+// False will limit output to only mention that a query to the Verisure API is made
 const flagDebug = true;
 
 
+// String that will be used as the MQTT root topic.
+// Can be a single string e.g. 'myhouse' or include subtopics, e.g. 'myhouse/my/alarmsystem'
+// Note that there should be no ending forward slash!
+const mqttRoot = 'sp53';
 
+
+// Read secrets from environment variables
 const config = {
     "verisureUsername": process.env.VERISURE_USERNAME,
     "verisurePwd": process.env.VERISURE_PWD,
@@ -28,9 +37,9 @@ if (flagDebug) {
 var mqttClient = mqtt.connect(`mqtt://${config.mqttBrokerHost}:${config.mqttBrokerPort}`);
 
 mqttClient.on('connect', function () {
-    mqttClient.subscribe('sp53/status/services/verisure-to-mqtt-bridge/', function (err) {
+    mqttClient.subscribe(`${mqttRoot}/status/services/verisure-to-mqtt-bridge/`, function (err) {
         if (!err) {
-            mqttClient.publish('sp53/status/services/verisure-to-mqtt-bridge', 'Hello mqtt');
+            mqttClient.publish(`${mqttRoot}/status/services/verisure-to-mqtt-bridge`, 'Hello mqtt');
         }
     })
 })
@@ -57,48 +66,48 @@ function getVerisure() {
                 }
 
                 // Overall alarm state 
-                mqttClient.publish(`sp53/${verisure_prefix}/tele/armState/STATE`,
+                mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/armState/STATE`,
                     JSON.stringify(overview.armState), {
                         "retain": true
                     });
 
                 // Alarm state compatible 
-                mqttClient.publish(`sp53/${verisure_prefix}/tele/armstateCompatible/STATE`, overview.armstateCompatible.toString());
+                mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/armstateCompatible/STATE`, overview.armstateCompatible.toString());
 
                 // Control plugs
                 overview.controlPlugs.forEach(controlPlug => {
-                    mqttClient.publish(`sp53/${verisure_prefix}/tele/controlPlug/STATE`, JSON.stringify(controlPlug));
+                    mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/controlPlug/STATE`, JSON.stringify(controlPlug));
                 });
 
                 // Smart plugs
                 overview.smartPlugs.forEach(smartPlug => {
-                    mqttClient.publish(`sp53/${verisure_prefix}/tele/smartPlug/STATE`, JSON.stringify(smartPlug));
+                    mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/smartPlug/STATE`, JSON.stringify(smartPlug));
                 });
 
                 // Door locks
                 // TODO
 
                 // SMS count
-                mqttClient.publish(`sp53/${verisure_prefix}/tele/totalSmsCount/STATE`, overview.totalSmsCount.toString());
+                mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/totalSmsCount/STATE`, overview.totalSmsCount.toString());
 
                 // Environmental values
                 overview.climateValues.forEach(climateValue => {
-                    mqttClient.publish(`sp53/${verisure_prefix}/tele/${climateValue.deviceArea}/SENSOR`, JSON.stringify(climateValue));
+                    mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/${climateValue.deviceArea}/SENSOR`, JSON.stringify(climateValue));
                 });
 
                 // Error list
                 overview.installationErrorList.forEach(installationError => {
-                    mqttClient.publish(`sp53/${verisure_prefix}/tele/${installationError.area}/STATE`, JSON.stringify(installationError));
+                    mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/${installationError.area}/STATE`, JSON.stringify(installationError));
                 });
 
                 // Pending changes
-                mqttClient.publish(`sp53/${verisure_prefix}/tele/pendingChanges/STATE`, overview.pendingChanges.toString());
+                mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/pendingChanges/STATE`, overview.pendingChanges.toString());
 
                 // Ethernet mode active
-                mqttClient.publish(`sp53/${verisure_prefix}/tele/ethernetModeActive/STATE`, overview.ethernetModeActive.toString());
+                mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/ethernetModeActive/STATE`, overview.ethernetModeActive.toString());
 
                 // Ethernet connected now
-                mqttClient.publish(`sp53/${verisure_prefix}/tele/ethernetConnectedNow/STATE`, overview.ethernetConnectedNow.toString());
+                mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/ethernetConnectedNow/STATE`, overview.ethernetConnectedNow.toString());
 
                 // Heat pumps
                 // TODO 
@@ -107,31 +116,31 @@ function getVerisure() {
                 // TODO
 
                 // Latest Ethernet status
-                mqttClient.publish(`sp53/${verisure_prefix}/tele/latestEthernetStatus/STATE`, JSON.stringify(overview.latestEthernetStatus));
+                mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/latestEthernetStatus/STATE`, JSON.stringify(overview.latestEthernetStatus));
 
                 // Customer image cameras
                 // TODO
 
                 // Battery process
-                mqttClient.publish(`sp53/${verisure_prefix}/tele/batteryProcess/STATE`, JSON.stringify(overview.batteryProcess));
+                mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/batteryProcess/STATE`, JSON.stringify(overview.batteryProcess));
 
                 // User tracking status
-                mqttClient.publish(`sp53/${verisure_prefix}/tele/userTrackingStatus/STATE`, overview.userTracking.installationStatus.toString());
+                mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/userTrackingStatus/STATE`, overview.userTracking.installationStatus.toString());
 
                 // User tracking
                 overview.userTracking.users.forEach(user => {
-                    mqttClient.publish(`sp53/${verisure_prefix}/tele/userTracking/STATE`, JSON.stringify(user));
+                    mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/userTracking/STATE`, JSON.stringify(user));
                 });
 
                 // Event counts
                 // TODO
 
                 // Door/window report state
-                mqttClient.publish(`sp53/${verisure_prefix}/tele/doorWindowReportState/STATE`, overview.doorWindow.reportState.toString());
+                mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/doorWindowReportState/STATE`, overview.doorWindow.reportState.toString());
 
                 // Door/window devices
                 overview.doorWindow.doorWindowDevice.forEach(doorWindow => {
-                    mqttClient.publish(`sp53/${verisure_prefix}/tele/doorWindow/STATE`, JSON.stringify(doorWindow));
+                    mqttClient.publish(`${mqttRoot}/${verisure_prefix}/tele/doorWindow/STATE`, JSON.stringify(doorWindow));
                 });
             })
             .catch((error) => {
@@ -162,5 +171,4 @@ interval.onTimeout(function () {
     console.log('XXXXXXXXXXXXXXXXXXXXXXXX')
     console.log('Timeout!');
     console.log('XXXXXXXXXXXXXXXXXXXXXXXX')
-    // log timeout here
 });
