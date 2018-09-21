@@ -37,7 +37,7 @@ if (flagDebug) {
 var mqttClient = mqtt.connect(`mqtt://${config.mqttBrokerHost}:${config.mqttBrokerPort}`);
 
 mqttClient.on('connect', function () {
-    mqttClient.subscribe(`${mqttRoot}/status/services/verisure-to-mqtt-bridge/`, function (err) {
+    mqttClient.subscribe(`${mqttRoot}/status/services/verisure-to-mqtt-bridge`, function (err) {
         if (!err) {
             mqttClient.publish(`${mqttRoot}/status/services/verisure-to-mqtt-bridge`, 'Hello mqtt');
         }
