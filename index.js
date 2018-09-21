@@ -43,24 +43,6 @@ function wait(timeout) {
     })
 }
 
-async function getVerisureWithRetry() {
-    const MAX_RETRIES = 3;
-
-    for (let i = 0; i < MAX_RETRIES; i++) {
-        try {
-            await verisure.getToken();
-            installations = await verisure.getInstallations();
-            const res = await installations[0].getOverview();
-            return res;
-        } catch (err) {
-            const timeout = Math.pow(2, i) * 1000
-            console.log('Waiting', timeout, 'ms')
-            await wait(timeout)
-            console.log('Retrying', err.message, i)
-        }
-    }
-}
-
 function getVerisure() {
     try {
         const verisure = new Verisure(config.verisureUsername, config.verisurePwd);
@@ -166,14 +148,13 @@ function getVerisure() {
 
 // Pull data from Verisure API every 10 minutes
 var interval = asyncInterval(async function (done) {
-    // Don't worry, we only enter here one call at a time.
+    // We only enter here one call at a time.
     var overview = await getVerisure();
 
     // After we finish our async function, let asyncInterval know
     // This will tell asyncInterval to schedule the next interval
     done();
 }, 600000, 650000);
-// }, 10000, 650000);
 
 
 // optional timeout
