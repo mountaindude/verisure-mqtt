@@ -1,0 +1,31 @@
+{
+  "name": "verisure-to-mqtt-bridge",
+  "version": "1.0.0",
+  "description": "Node.js app that queries Verisure's APIs for status, and then forward this info to MQTT.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.ptarmiganlabs.net/goran/verisure-to-mqtt-bridge.git"
+  },
+  "keywords": [
+    "verisure",
+    "mqtt",
+    "nodejs"
+  ],
+  "author": "Göran Sander",
+  "license": "MIT",
+  "dependencies": {
+    "asyncinterval": "0.0.7",
+    "mqtt": "^2.18.8",
+    "verisure": "^2.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-google": "^0.10.0",
+    "nodemon": "^1.18.4"
+  }
+}

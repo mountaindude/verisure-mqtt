@@ -1,0 +1,14 @@
+# docker-compose.yml
+version: '2.2'
+services:
+  verisure-mqtt:
+    image: mountaindude/verisure-mqtt
+    container_name: verisure-mqtt
+    restart: always
+    environment:
+      - "MQTT_BROKER_HOST=<ip of MQTT broker>"
+      - "MQTT_BROKER_PORT=<port used by MQTT broker>"
+      - "VERISURE_USERNAME=<username used to log into Verisure web service>"
+      - "VERISURE_PWD=<password used to log into Verisure web service"
+    logging:
+      driver: json-file

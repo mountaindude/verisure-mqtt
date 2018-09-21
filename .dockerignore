@@ -1,0 +1,14 @@
+.vscode
+node_modules
+.dockerignore
+.eslintrc.yml
+.git
+.gitignore
+docker-compose.yml
+docker-compose-template.yml
+Dockerfile
+nodemon.json
+start.sh
+verisure-mqtt.tar
+npm-debug.log
+
