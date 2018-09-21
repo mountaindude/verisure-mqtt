@@ -1,7 +1,8 @@
 # verisure-to-mqtt-bridge
 
 Dockerized Node.js app that queries Verisure's APIs for status, and then forward this info to MQTT.  
-Once the data has been injected into MQTT messages, it can be acted upon by any tool or system capable of subscribing to MQTT topics. 
+Once the data has been injected into MQTT messages, it can be acted upon by any tool or system capable of subscribing to MQTT topics.  
+
 A very powerful use case is to use [Node-RED](https://nodered.org/) to automate various actions based on information retrieved from the alarm system.  
 For example
 
