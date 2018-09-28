@@ -14,7 +14,7 @@ services:
       - "VERISURE_DEBUG=true"
       - "MQTT_BROKER_HOST=<ip of MQTT broker>"
       - "MQTT_BROKER_PORT=<port used by MQTT broker>"
-      - "MQTT_ROOT_TOPIC=verisure/"
+      - "MQTT_ROOT_TOPIC=myHouse/"
       - "VERISURE_USERNAME=<username used to log into Verisure web service>"
       - "VERISURE_PWD=<password used to log into Verisure web service"
     logging:
