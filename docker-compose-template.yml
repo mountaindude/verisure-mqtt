@@ -7,9 +7,14 @@ services:
     init: true
     container_name: verisure-mqtt
     restart: always
+
+    # Set debug flag to true to output all received info to console.
+    # False will limit output to only mention that a query to the Verisure API is made
     environment:
+      - "VERISURE_DEBUG=true"
       - "MQTT_BROKER_HOST=<ip of MQTT broker>"
       - "MQTT_BROKER_PORT=<port used by MQTT broker>"
+      - "MQTT_ROOT_TOPIC=verisure/"
       - "VERISURE_USERNAME=<username used to log into Verisure web service>"
       - "VERISURE_PWD=<password used to log into Verisure web service"
     logging:
