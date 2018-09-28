@@ -158,7 +158,7 @@ var interval = asyncInterval(async function (done) {
     // After we finish our async function, let asyncInterval know
     // This will tell asyncInterval to schedule the next interval
     done();
-    }, 600000, 650000);
+}, 600000, 650000);
 
 
 // optional timeout
