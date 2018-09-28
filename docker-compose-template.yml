@@ -2,7 +2,9 @@
 version: '2.2'
 services:
   verisure-mqtt:
-    image: mountaindude/verisure-mqtt
+    # Use image on Docker Hub
+    image: mountaindude/verisure-mqtt:latest
+    init: true
     container_name: verisure-mqtt
     restart: always
     environment:

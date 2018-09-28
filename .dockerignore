@@ -1,4 +1,5 @@
 .vscode
+img
 node_modules
 .dockerignore
 .eslintrc.yml
@@ -11,4 +12,4 @@ nodemon.json
 start.sh
 verisure-mqtt.tar
 npm-debug.log
-
+package-lock.json
