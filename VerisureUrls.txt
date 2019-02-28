@@ -1,0 +1,26 @@
+References:
+https://github.com/persandstrom/python-verisure
+https://github.com/ptz0n/node-verisure
+
+
+*** Examples ***
+
+Login:
+https://e-api01.verisure.com/xbn/2/cookie
+Authorization Basic CPE/mail@mail.com:Password
+
+Headers to add (From login response):
+Cookie=vid={sessionid}; path=/xbn/2; domain=.e-api01.verisure.com; Secure; HttpOnly; Expires=Sat, 27 Feb 2021 10:01:05 GMT;
+
+Installations:
+https://e-api01.verisure.com/xbn/2/installation/search?email=mail@mail.com
+
+Installation Overview:
+https://e-api01.verisure.com/xbn/2/installation/{giid}/overview
+
+Installation Eventlog:
+https://e-api01.verisure.com/celapi/customereventlog/installation/{giid}/eventlog?offset=0&pagesize=10
+
+Installation Dorlock state:
+https://e-api01.verisure.com/xbn/2/installation/{giid}/doorlockstate/search
+
