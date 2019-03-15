@@ -1,7 +1,5 @@
 # verisure-to-mqtt-bridge
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/mountaindude/verisure-mqtt.svg)](https://greenkeeper.io/)
-
 Dockerized Node.js app that queries Verisure's APIs for status and sensor readings, and then forwards this info to MQTT.  
 Once the data has been injected into MQTT messages, it can be acted upon by any tool or system capable of subscribing to MQTT topics.  
 
