@@ -24,8 +24,8 @@
     "verisure": "^2.4.0"
   },
   "devDependencies": {
-    "eslint": "^5.6.0",
-    "eslint-config-google": "^0.12.0",
-    "nodemon": "^1.18.4"
+    "eslint": "5.6.0",
+    "eslint-config-google": "0.12.0",
+    "nodemon": "1.18.4"
   }
 }
