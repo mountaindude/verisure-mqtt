@@ -36,15 +36,15 @@ mqttClient.on('connect', function () {
         if (!err) {
             mqttClient.publish(`${config.mqttRootTopic}/status/services/verisure-to-mqtt-bridge`, 'Hello mqtt');
         }
-    })
-})
+    });
+});
 
 function wait(timeout) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve()
-        }, timeout)
-    })
+            resolve();
+        }, timeout);
+    });
 }
 
 function getVerisure() {
@@ -165,7 +165,7 @@ var interval = asyncInterval(async function (done) {
 
 // optional timeout
 interval.onTimeout(function () {
-    console.log('XXXXXXXXXXXXXXXXXXXXXXXX')
+    console.log('XXXXXXXXXXXXXXXXXXXXXXXX');
     console.log('Timeout!');
-    console.log('XXXXXXXXXXXXXXXXXXXXXXXX')
+    console.log('XXXXXXXXXXXXXXXXXXXXXXXX');
 }); 
