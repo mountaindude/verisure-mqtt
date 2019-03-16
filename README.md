@@ -1,5 +1,7 @@
 # verisure-to-mqtt-bridge
 
+[![Build Status](https://travis-ci.com/mountaindude/verisure-mqtt.svg?branch=master)](https://travis-ci.com/mountaindude/verisure-mqtt)
+
 Dockerized Node.js app that queries Verisure's APIs for status and sensor readings, and then forwards this info to MQTT.  
 Once the data has been injected into MQTT messages, it can be acted upon by any tool or system capable of subscribing to MQTT topics.  
 
