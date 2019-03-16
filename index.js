@@ -80,7 +80,9 @@ function getVerisure() {
                 });
 
                 // Door locks
-                // TODO
+                overview.doorLockStatusList.forEach(doorLock => {
+                    mqttClient.publish(`${config.mqttRootTopic}/${verisure_prefix}/tele/doorLock/STATE`, JSON.stringify(doorLock));
+                });
 
                 // SMS count
                 mqttClient.publish(`${config.mqttRootTopic}/${verisure_prefix}/tele/totalSmsCount/STATE`, overview.totalSmsCount.toString());
