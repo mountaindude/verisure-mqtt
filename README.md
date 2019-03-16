@@ -61,16 +61,17 @@ Even better, use docker-compose. Adapt the docker-compose.yml file to your needs
 
 ```yaml
 # docker-compose.yml
-version: '2.2'  
+version: '3.3'  
 services:  
   verisure-mqtt:  
     image: mountaindude/verisure-mqtt
-    init: true
     container_name: verisure-mqtt  
     restart: always  
     environment:  
+      - "VERISURE_DEBUG=true"
       - "MQTT_BROKER_HOST=<ip of MQTT broker>"  
       - "MQTT_BROKER_PORT=<port used by MQTT broker>"  
+      - "MQTT_ROOT_TOPIC=myHouse/"  
       - "VERISURE_USERNAME=<username used to log into Verisure web service>"  
       - "VERISURE_PWD=<password used to log into Verisure web service"  
     logging:  
@@ -140,12 +141,11 @@ This `docker-compose.yml` file will use the latest available image on Docker Hub
 
 ```yaml
 # docker-compose.yml
-version: '2.2'
+version: '3.3'
 services:
   verisure-mqtt:
     # Use image on Docker Hub
     image: mountaindude/verisure-mqtt:latest
-    init: true
     container_name: verisure-mqtt
     restart: always
 
