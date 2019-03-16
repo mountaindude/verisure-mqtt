@@ -16,6 +16,17 @@ The status JSON returned from Verisure is quite rich and includes both alarm rel
   
 It is easy to change th MQTT topics in case the current ones don't fit your needs.
 
+## Changelog
+
+### Version 1.1
+
+* Added support for door lock state (thanks André!).
+* Move to use docker-compose 3.3. Minor changes in docker-compose.yml file.
+
+### Version 1.0
+
+* First release.
+
 ## Eye candy using InfluxDB and Grafana
 
 Pushing the sensor readings to MQTT makes it possible to act on them from other systems. A Node-RED flow for taking the MQTT messages and storing them into InfluxDB can look like this:
