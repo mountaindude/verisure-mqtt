@@ -1,10 +1,9 @@
 # docker-compose.yml
-version: '2.2'
+version: '3.3'
 services:
   verisure-mqtt:
     # Use image on Docker Hub
     image: mountaindude/verisure-mqtt:latest
-    init: true
     container_name: verisure-mqtt
     restart: always
 
@@ -17,5 +16,7 @@ services:
       - "MQTT_ROOT_TOPIC=myHouse/"
       - "VERISURE_USERNAME=<username used to log into Verisure web service>"
       - "VERISURE_PWD=<password used to log into Verisure web service"
+
+    # Depending on what version of Docker you are using, and on what platform, you might need to comment out the next two lines
     logging:
       driver: json-file
