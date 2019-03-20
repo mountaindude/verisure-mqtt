@@ -18,6 +18,8 @@ The status JSON returned from Verisure is quite rich and includes both alarm rel
   
 It is easy to change th MQTT topics in case the current ones don't fit your needs.
 
+***Note! Do NOT download and user master branch unless you know what you are doing. Instead use a suitable [release](https://github.com/mountaindude/verisure-mqtt/releases). This will avoid issues due to new development that may have been done on master branch, since the last release was made.***
+
 ## Changelog
 
 ### Version 1.1
