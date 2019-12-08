@@ -21,7 +21,7 @@
     "asyncinterval": "0.0.7",
     "jshint": "^2.10.2",
     "mqtt": "^2.18.8",
-    "verisure": "^2.4.0"
+    "verisure": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "5.15.3",
