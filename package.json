@@ -20,7 +20,7 @@
   "dependencies": {
     "asyncinterval": "0.0.7",
     "jshint": "^2.10.2",
-    "mqtt": "^2.18.8",
+    "mqtt": "^3.0.0",
     "verisure": "^3.0.0"
   },
   "devDependencies": {
