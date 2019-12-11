@@ -26,6 +26,6 @@
   "devDependencies": {
     "eslint": "5.15.3",
     "eslint-config-google": "0.12.0",
-    "nodemon": "1.18.10"
+    "nodemon": "2.0.2"
   }
 }
