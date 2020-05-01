@@ -4,7 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/0f88c41e4ee6b831ab49/maintainability)](https://codeclimate.com/github/mountaindude/verisure-mqtt/maintainability)
 
 Dockerized Node.js app that queries Verisure's APIs for status and sensor readings, and then forwards this info to MQTT.  
-Once the data has been injected into MQTT messages, it can be acted upon by any tool or system capable of subscribing to MQTT topics.  
+Once the data has been injected into MQTT messages, it can be acted upon by any tool or system capable of subscribing to MQTT topics.
 
 What kind of data that is available from different Verisure devices vary, but many of them (PIR, camera, smoke detectors etc) contain temperature and/or humidity sensors. These sensor readings can be logged and then provide useful long-term environmental information.
 
@@ -45,7 +45,8 @@ Pushing the sensor readings to MQTT makes it possible to act on them from other 
 
 ![Moving sensor data in MQTT messages to InfluxDB](img/Verisure_data_in_Node-RED.png)
 
-While Node-RED was initially (and still is) positioned as a visual prototyping tool for IoT applications, it has over the past several years developed into a rock-solid platform that lots of people use for continuous data processing. It might not be solid enough for mission critical enterprise data, but it's not far away.  
+While Node-RED was initially (and still is) positioned as a visual prototyping tool for IoT applications, it has over the past several years developed into a rock-solid platform that lots of people use for continuous data processing. It might not be solid enough for mission critical enterprise data, but it's not far away.
+
 For the purpose of collecting and acting on sensor data in a home setting, Node-RED is more than adequate.  
 Oh, and Node-RED of course runs as a Docker container too.. making it a breeze to set up.
 
@@ -88,9 +89,9 @@ version: '3.3'
 services:  
   verisure-mqtt:  
     image: mountaindude/verisure-mqtt
-    container_name: verisure-mqtt  
-    restart: always  
-    environment:  
+    container_name: verisure-mqtt
+    restart: always
+    environment:
       - "VERISURE_DEBUG=true"
       - "MQTT_BROKER_HOST=<ip of MQTT broker>"  
       - "MQTT_BROKER_PORT=<port used by MQTT broker>"  
