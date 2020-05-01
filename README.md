@@ -8,7 +8,7 @@ Once the data has been injected into MQTT messages, it can be acted upon by any 
 
 What kind of data that is available from different Verisure devices vary, but many of them (PIR, camera, smoke detectors etc) contain temperature and/or humidity sensors. These sensor readings can be logged and then provide useful long-term environmental information.
 
-A very powerful use case is to use [Node-RED](https://nodered.org/) to automate various actions based on information retrieved from the alarm system.  
+A very powerful use case is to use [Node-RED](https://nodered.org/) to automate various actions based on information retrieved from the alarm system.
 
 For example
 
@@ -60,12 +60,14 @@ There is some rate limiting for the API, preventing too frequent calls.
 
 It is hard to say how often calls can be made, but given that climate sensors only update once per hour, the Node.js code in index.js is set to query the API every 10 minutes. This seems to work fine from a rate limiting perspective.
 
-Some parts (e.g. info on door locks, heat pumps, cameras etc) of the data received from Verisure's API are not forwarded to MQTT. The reason is simply that I don't have access to such devices, and thus don't know what the associated JSON looks like.  
+Some parts (e.g. info on door locks, heat pumps, cameras etc) of the data received from Verisure's API are not forwarded to MQTT. The reason is simply that I don't have access to such devices, and thus don't know what the associated JSON looks like.
+
 Please feel free to fork this repository and add the missing code if you have access to those missing devices.
 
 ## Dockerizing the Node.js app
 
-For testing purposes [this guide](https://nodejs.org/en/docs/guides/nodejs-docker-webapp) is useful.  
+For testing purposes [this guide](https://nodejs.org/en/docs/guides/nodejs-docker-webapp) is useful.
+
 A proper production deployment requires more work, but even the steps outlined below will be enough to test things up on a home server, NAS or similar.
 
 ### Build Docker image
@@ -85,9 +87,9 @@ Even better, use docker-compose. Adapt the docker-compose.yml file to your needs
 
 ```yaml
 # docker-compose.yml
-version: '3.3'  
-services:  
-  verisure-mqtt:  
+version: '3.3'
+services:
+  verisure-mqtt:
     image: mountaindude/verisure-mqtt
     container_name: verisure-mqtt
     restart: always
@@ -131,10 +133,10 @@ docker logs verisure-mqtt -f
 If you develop on one computer but then want to deploy your newly created Docker image to a server, you need to export it to a TAR file.
 
 ```bash
-docker images  
+docker images
 
 # Take note of the id of the image you want to export
-docker save -o ./verisure-mqtt.tar <id>  
+docker save -o ./verisure-mqtt.tar <id>
 ```
 
 ### Import image into new server
@@ -145,14 +147,14 @@ An alternative to the steps below is to pubish the image to Docker Hub and thus 
 ```bash
 # Log into target server
 # Copy verisure-mqtt.tar to temp folder on target server
-docker load -i ./verisure-mqtt.tar  
-docker images  
+docker load -i ./verisure-mqtt.tar
+docker images
 
 # Take note of the id of the newly loaded image. Then rename the image to something human readable
-docker tag <image id> mountaindude/verisure-mqtt  
+docker tag <image id> mountaindude/verisure-mqtt
 
 # Copy docker-compose.yml file to target server, then create and start a new container based on the image
-docker-compose up  
+docker-compose up
 ```
 
 ### Use image on Docker Hub
