@@ -3,6 +3,7 @@ start.sh
 verisure-mqtt.tar
 docker-compose.yml
 nodemon.json
+.vscode/launch.json
 
 
 # ---> Node
