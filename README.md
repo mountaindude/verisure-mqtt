@@ -95,13 +95,16 @@ services:
     restart: always
     environment:
       - "VERISURE_DEBUG=true"
-      - "MQTT_BROKER_HOST=<ip of MQTT broker>"  
-      - "MQTT_BROKER_PORT=<port used by MQTT broker>"  
-      - "MQTT_ROOT_TOPIC=myHouse/"  
-      - "VERISURE_USERNAME=<username used to log into Verisure web service>"  
-      - "VERISURE_PWD=<password used to log into Verisure web service"  
-    logging:  
-      driver: json-file  
+      - "MQTT_BROKER_HOST=<ip of MQTT broker>"
+      - "MQTT_BROKER_PORT=<port used by MQTT broker>"
+      - "MQTT_ROOT_TOPIC=myHouse/"
+      - "VERISURE_USERNAME=<username used to log into Verisure web service>"
+      - "VERISURE_PWD=<password used to log into Verisure web service"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "5m"
 ```
 
 Then run

@@ -19,4 +19,7 @@ services:
 
     # Depending on what version of Docker you are using, and on what platform, you might need to comment out the next two lines
     logging:
-      driver: json-file
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "5m"
