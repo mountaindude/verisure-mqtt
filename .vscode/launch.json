@@ -10,6 +10,7 @@
             "name": "Launch Program",
             "envFile": "${env:USERPROFILE}/verisure.env",
             "program": "${workspaceFolder}/index.js",
+            "envFile": "${workspaceFolder}/.env",
         }
     ]
 }

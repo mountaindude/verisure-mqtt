@@ -1,6 +1,7 @@
 # verisure-to-mqtt-bridge
 
-[![Build Status](https://travis-ci.com/mountaindude/verisure-mqtt.svg?branch=master)](https://travis-ci.com/mountaindude/verisure-mqtt)
+[![Build Status](https://cloud.drone.io/api/badges/mountaindude/verisure-mqtt/status.svg)](https://cloud.drone.io/mountaindude/verisure-mqtt)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0f88c41e4ee6b831ab49/maintainability)](https://codeclimate.com/github/mountaindude/verisure-mqtt/maintainability)
 
 Dockerized Node.js app that queries Verisure's APIs for status and sensor readings, and then forwards this info to MQTT.  
 Once the data has been injected into MQTT messages, it can be acted upon by any tool or system capable of subscribing to MQTT topics.  
@@ -21,6 +22,11 @@ It is easy to change th MQTT topics in case the current ones don't fit your need
 ***Note! Do NOT download and user master branch unless you know what you are doing. Instead use a suitable [release](https://github.com/mountaindude/verisure-mqtt/releases). This will avoid issues due to new development that may have been done on master branch, since the last release was made.***
 
 ## Changelog
+
+### Version 1.2
+
+* Updated dependencies.
+* Switched to using Drone for building Docker images.
 
 ### Version 1.1
 

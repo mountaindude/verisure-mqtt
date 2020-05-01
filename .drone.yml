@@ -1,0 +1,23 @@
+kind: pipeline
+name: default
+
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: dockerhub_username
+    password:
+      from_secret: dockerhub_password
+    repo: mountaindude/verisure-mqtt
+    dockerfile: Dockerfile
+    context: 
+    # auto_tag: true
+    tags:
+    - latest
+    - '1.2.0'
+    - '1.2'
+    - '1'
+  when:
+    event:
+    - tag

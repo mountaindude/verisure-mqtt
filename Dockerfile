@@ -1,5 +1,8 @@
-# Use Node 8 LTS
-FROM node:8
+FROM node:12-stretch
+
+# Add metadata about the image
+LABEL maintainer="Göran Sander mountaindude@ptarmiganlabs.com"
+LABEL description="Forward Verisure alarm system data to MQTT."
 
 # Create app dir inside container
 WORKDIR /nodeapp
@@ -17,4 +20,4 @@ RUN groupadd -r nodejs \
 
 USER nodejs
 
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
