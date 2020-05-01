@@ -28,6 +28,7 @@ It is easy to change th MQTT topics in case the current ones don't fit your need
 * Updated dependencies.
 * Switched to using Drone for building Docker images.
 * Slight change in version numbers of images available on Docker Hub.
+* Docker image now based on Node.js v12 (was using v8 previously).
 
 ### Version 1.1
 
