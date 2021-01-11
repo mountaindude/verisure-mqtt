@@ -1,6 +1,6 @@
 {
   "name": "verisure-to-mqtt-bridge",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Node.js app that queries Verisure's APIs for status, and then forward this info to MQTT.",
   "main": "index.js",
   "scripts": {
@@ -19,13 +19,13 @@
   "license": "MIT",
   "dependencies": {
     "asyncinterval": "0.0.7",
-    "jshint": "^2.11.0",
-    "mqtt": "^4.0.0",
+    "jshint": "^2.12.0",
+    "mqtt": "^4.2.6",
     "verisure": "^3.0.0"
   },
   "devDependencies": {
-    "eslint": "6.8.0",
+    "eslint": "^7.17.0",
     "eslint-config-google": "0.14.0",
-    "nodemon": "2.0.3"
+    "nodemon": "^2.0.7"
   }
 }
