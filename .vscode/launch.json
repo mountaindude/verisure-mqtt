@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "envFile": "${env:USERPROFILE}/verisure.env",
+            "envFile": "${workspaceFolder}/../verisure.env",
             "program": "${workspaceFolder}/index.js",
         }
     ]

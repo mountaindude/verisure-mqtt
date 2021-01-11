@@ -2,6 +2,7 @@
 start.sh
 verisure-mqtt.tar
 docker-compose.yml
+docker-compose.yaml
 nodemon.json
 .env
 

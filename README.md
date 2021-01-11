@@ -22,24 +22,6 @@ It is easy to change th MQTT topics in case the current ones don't fit your need
 
 ***Note! Do NOT download and user master branch unless you know what you are doing. Instead use a suitable [release](https://github.com/mountaindude/verisure-mqtt/releases). This will avoid issues due to new development that may have been done on master branch, since the last release was made.***
 
-## Changelog
-
-### Version 1.2
-
-* Updated dependencies.
-* Switched to using Drone for building Docker images.
-* Slight change in version numbers of images available on Docker Hub.
-* Docker image now based on Node.js v12 (was using v8 previously).
-
-### Version 1.1
-
-* Added support for door lock state (thanks André!).
-* Move to use docker-compose 3.3. Minor changes in docker-compose.yml file.
-
-### Version 1.0
-
-* First release.
-
 ## Eye candy using InfluxDB and Grafana
 
 Pushing the sensor readings to MQTT makes it possible to act on them from other systems. A Node-RED flow for taking the MQTT messages and storing them into InfluxDB can look like this:
@@ -85,10 +67,10 @@ docker build -t mountaindude/verisure-mqtt .
 docker run --name verisure-mqtt -d mountaindude/verisure-mqtt
 ```
 
-Even better, use docker-compose. Adapt the docker-compose.yml file to your needs:
+Even better, use docker-compose. Adapt the docker-compose.yaml file to your needs:
 
 ```yaml
-# docker-compose.yml
+# docker-compose.yaml
 version: '3.3'
 services:
   verisure-mqtt:
@@ -115,7 +97,7 @@ Then run
 docker-compose up
 ```
 
-from the directory where docker-compose.yml is stored.
+from the directory where docker-compose.yaml is stored.
 
 ### Get shell inside running container
 
@@ -158,7 +140,7 @@ docker images
 # Take note of the id of the newly loaded image. Then rename the image to something human readable
 docker tag <image id> mountaindude/verisure-mqtt
 
-# Copy docker-compose.yml file to target server, then create and start a new container based on the image
+# Copy docker-compose.yaml file to target server, then create and start a new container based on the image
 docker-compose up
 ```
 
@@ -168,10 +150,10 @@ If you don't want to build the Docker image yourself, it is also [available on D
 
 If the requested Docker image is not found locally, it will be requested from Docker Hub (or other image repository that you have configured/logged into).
 
-This `docker-compose.yml` file will use the latest available image on Docker Hub. Make sure to define the MQTT and user credentials in it before running `docker-compose up`.
+This `docker-compose.yaml` file will use the latest available image on Docker Hub. Make sure to define the MQTT and user credentials in it before running `docker-compose up`.
 
 ```yaml
-# docker-compose.yml
+# docker-compose.yaml
 version: '3.3'
 services:
   verisure-mqtt:
