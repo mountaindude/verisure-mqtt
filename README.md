@@ -3,13 +3,32 @@
 [![Build Status](https://cloud.drone.io/api/badges/mountaindude/verisure-mqtt/status.svg)](https://cloud.drone.io/mountaindude/verisure-mqtt)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0f88c41e4ee6b831ab49/maintainability)](https://codeclimate.com/github/mountaindude/verisure-mqtt/maintainability)
 
+## April 2021 update
+
+Verisure has enabled 2-factor authentication (2FA) across (parts or all of?) their user base. This means that you will receive a code in an SMS message, and this code should be entered sent to Verisure as part of the login flow, to prove your identiy.
+
+This is excellent news from a security perspective, but unfortunately it makes it harder to pull data from the Verisure APIs.
+
+This means that in order to keep using the code in this repository you need to disable 2FA login at Verisure.  
+Wheter or not this is the right thing for *you*, is something that only *you* can decide.
+
+The upside is that you can keep getting for example temperature, humidity etc from your Verisure system.
+
+The downside is that you will not have as strong login security as you would have if 2FA was enabled.
+
+If you decide to disable 2FA that can be done after logging into the Verisure "my pages" site online.
+
+    Note: The above is how things are at the time of this writing. As this whole field is ultimately controlled by Verisure, things may change at any time, possibly without prior notice.
+
+
+## Overview
 Dockerized Node.js app that queries Verisure's APIs for status and sensor readings, and then forwards this info to MQTT.
 
 Once the data has been injected into MQTT messages, it can be acted upon by any tool or system capable of subscribing to MQTT topics.
 
 What kind of data that is available from different Verisure devices vary, but many of them (PIR, camera, smoke detectors etc) contain temperature and/or humidity sensors. These sensor readings can be logged and then provide useful long-term environmental information.
 
-A very powerful use case is to use [Node-RED](https://nodered.org/) to automate various actions based on information retrieved from the alarm system.
+A powerful use case is to use [Node-RED](https://nodered.org/) to automate various actions based on information retrieved from the alarm system.
 
 For example
 

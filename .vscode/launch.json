@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch Program",
             "envFile": "${workspaceFolder}/../verisure.env",
-            "program": "${workspaceFolder}/index.js",
+            "program": "${workspaceFolder}/index.js"
         }
     ]
 }
