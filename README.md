@@ -93,7 +93,7 @@ Even better, use docker-compose. Adapt the docker-compose.yaml file to your need
 version: '3.3'
 services:
   verisure-mqtt:
-    image: mountaindude/verisure-mqtt
+    image: mountaindude/verisure-mqtt:1.4.1
     container_name: verisure-mqtt
     restart: always
     environment:

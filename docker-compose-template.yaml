@@ -3,7 +3,7 @@ version: '3.3'
 services:
   verisure-mqtt:
     # Use image on Docker Hub
-    image: mountaindude/verisure-mqtt:latest
+    image: mountaindude/verisure-mqtt:1.4.1
     container_name: verisure-mqtt
     restart: always
 

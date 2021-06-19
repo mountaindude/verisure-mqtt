@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 1.4.1
+
+* Updated dependencies.
+
+## Version 1.4.0
+
+* Updated dependencies.
+* Verisure now offers 2-factor authentication. This however doesn't work well with a tool like this one. For now you'll have to keep using username/pwd if you want to keep pulling your data from Verisure's system. Hopefully they will at some point offer app-specific tokens similar to how for example GitHub does things.
+
 ## Version 1.3
 
 * Updated dependencies.
